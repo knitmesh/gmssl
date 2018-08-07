@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <title>SM2 Algorithm Encryption and Decryption sample</title>
+    <style>
+        textarea {
+            width: 100%;
+        }
+    </style>
+    
+    <script src="build/SM2-2.min.js"></script>
+    
+    <script language="JavaScript" type="text/javascript">
+        function certCrypt(){
+        	var certData = document.getElementById('txtCertData').value;
+		  	var msg = document.getElementById('txtRawData').value;
+			var cipherMode = document.getElementById('cipherMode').value;
+			
+			var encryptData=sm2CertCrypt(msg,certData,cipherMode)
+		    document.getElementById('txtCryptData').value = hex2b64(encryptData);
+        }
+    </script>
+</head>
+
+<body>
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+    	<h4>(Step1) Crypt message</h4>
+                Crypt Options:
+                <select id="cipherMode" name="cipherMode">
+                    <option value="1" selected="selected">C1C3C2
+                    <option value="0">C1C2C3
+                </select>
+        <section class="inner">
+            <hr size="1" />
+            <h4>SM2 Certificate Encryption</h4>
+            <fieldset>
+                <legend>SM2证书加密</legend>
+                <ul>
+                    <li>
+                        <label>原始数据：<input type="text" id="txtRawData"  size="80" 
+           value="jonllen" /></label>
+                    </li>
+                    <li>
+                        <label>证书数据：<textarea width="100%" id="txtCertData" style="width:500px; height:40px;">MIICQDCCAeWgAwIBAgIQG2THdO0arf/KaLKoTVlCOzAMBggqgRzPVQGDdQUAMB8xEDAOBgNVBAMMB1NNMlJPT1QxCzAJBgNVBAYTAkNOMB4XDTE0MDYxODEzNTgzNVoXDTE2MDYxODEzNTgzNVowZTEiMCAGCSqGSIb3DQEJARYTam9ubGxlbkBob3RtYWlsLmNvbTEPMA0GA1UEBwwG6ZW/5rKZMQ8wDQYDVQQIDAbmuZbljZcxCzAJBgNVBAYTAkNOMRAwDgYDVQQDDAdKb25sbGVuMFkwEwYHKoZIzj0CAQYIKoEcz1UBgi0DQgAEXLAuT39XB5LJmTprFiGLPfqZl5tyGm1n9oXSVDrGRP2RfQRJOqD6cH6PEvmGhM1ydJv0iQMg2mvh6PjAlm58W6OBujCBtzAMBgNVHRMBAf8EAjAAMB0GA1UdDgQWBBQstXX3UIwlBK9k70GJYGM8mjG6gTAfBgNVHSMEGDAWgBQ/LpOmNnAJt7mAwIZpsX3cnqlkqjBCBggrBgEFBQcBAQQ2MDQwMgYIKwYBBQUHMAKGJmh0dHA6Ly9sb2NhbGhvc3QvUEtJL2NlcnRzL0RTQVJPT1QuY3J0MA4GA1UdDwEB/wQEAwIE8DATBgNVHSUEDDAKBggrBgEFBQcDAjAMBggqgRzPVQGDdQUAA0cAMEQCIBJO7K/XDt+igzKkWSkbRKZRtQKsS1i2Fmdp2Ar5EEL+AiA759mE/uINaEC7sMXOoqzTzkLCMIHGyLi80j0dG5pjow==</textarea>
+                <em>base64编码格式</em>
+                </label>
+                    </li>
+                    <li style="display:none">
+                        <label>证书公钥：<input type="text" id="txtPubKey" size="120" 
+           value="" /></label>
+                    </li>
+                    <li>
+                        <input type="button" value="加密" onClick="certCrypt();" />
+                    </li>
+                    <li>
+                        <label>加密后数据：<textarea width="100%" id="txtCryptData" readonly="readonly" style="width:500px; height:40px;"></textarea><em>base64编码格式</em>
+           </label>
+                    </li>
+
+                </ul>
+                <div>
+
+                </div>
+            </fieldset>
+        </section>
+
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+        <footer class="inner">
+            <p>Powered By <a href="http://www.jonllen.com/" target="_blank">Jonllen</a></p>
+        </footer>
+    </div>
+
+</body>
+
+</html>
